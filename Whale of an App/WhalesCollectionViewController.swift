@@ -9,10 +9,71 @@ import UIKit
 
 class WhalesCollectionViewController: UIViewController {
     
-
+    enum WhaleCollectionViewSection {
+        case main
+    }
+    
+    let viewModel: WhalesCollectionControllerViewModel
+    var datasource: UICollectionViewDiffableDataSource<WhaleCollectionViewSection, Whale>?
+    
+    lazy var whalesCollectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createCollectionViewLayout())
+        collectionView.backgroundColor = .green
+        collectionView.delegate = self
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .blue
+        configureViewHierarchy()
+        configureDataSource()
     }
+    
+    private func configureViewHierarchy() {
+        view.addSubview(whalesCollectionView)
+        
+        NSLayoutConstraint.activate([
+            whalesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            whalesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            whalesCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            whalesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
+    private func createCollectionViewLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                              heightDimension: .fractionalWidth(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                               heightDimension: .fractionalHeight(1.0))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 2)
+        let section = NSCollectionLayoutSection(group: group)
+        return UICollectionViewCompositionalLayout(section: section)
+    }
+    
+    private func configureDataSource() {
+        let whaleCell = UICollectionView.CellRegistration<WhaleCollectionViewCell, Whale> { cell, indexPath, whale in
+            cell.viewModel = WhaleCollectionCellViewModel(whale: whale)
+        }
+        
+        datasource = UICollectionViewDiffableDataSource<WhaleCollectionViewSection, Whale>(collectionView: whalesCollectionView, cellProvider: { collectionView, indexPath, whale -> UICollectionViewCell? in
+            collectionView.dequeueConfiguredReusableCell(using: whaleCell, for: indexPath, item: whale)
+        })
+    }
+    
+    private func updateDataSource(with whales: [Whale]) {
+        guard let datasource = datasource else { return }
+        
+        var snapshot = NSDiffableDataSourceSnapshot<WhaleCollectionViewSection, Whale>()
+        snapshot.appendItems(whales, toSection: .main)
+        datasource.apply(snapshot)
+    }
+}
+ 
+// MARK: UICollectionViewDelegate
+extension WhalesCollectionViewController: UICollectionViewDelegate {
+    
 }

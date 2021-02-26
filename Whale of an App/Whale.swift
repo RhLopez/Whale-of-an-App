@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Whale: Codable {
+struct Whale: Codable, Hashable {
     let name: String
     let imagePath: String
 }

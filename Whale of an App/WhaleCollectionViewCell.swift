@@ -13,6 +13,12 @@ class WhaleCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    var viewModel: WhaleCollectionCellViewModel? {
+        didSet {
+            updateCell()
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureCell()

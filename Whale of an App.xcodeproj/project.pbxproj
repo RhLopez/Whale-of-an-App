@@ -22,6 +22,8 @@
 		6499306325E987C0008DFA6C /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6499306225E987C0008DFA6C /* DataProvider.swift */; };
 		6499306B25E987D8008DFA6C /* JSONDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6499306A25E987D7008DFA6C /* JSONDataProvider.swift */; };
 		6499307025E989E3008DFA6C /* WhaleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6499306F25E989E3008DFA6C /* WhaleCollectionViewCell.swift */; };
+		6499307525E98F74008DFA6C /* WhaleCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6499307425E98F74008DFA6C /* WhaleCollectionCellViewModel.swift */; };
+		6499307A25E99398008DFA6C /* WhalesCollectionControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6499307925E99398008DFA6C /* WhalesCollectionControllerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		6499306225E987C0008DFA6C /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		6499306A25E987D7008DFA6C /* JSONDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDataProvider.swift; sourceTree = "<group>"; };
 		6499306F25E989E3008DFA6C /* WhaleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhaleCollectionViewCell.swift; sourceTree = "<group>"; };
+		6499307425E98F74008DFA6C /* WhaleCollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhaleCollectionCellViewModel.swift; sourceTree = "<group>"; };
+		6499307925E99398008DFA6C /* WhalesCollectionControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhalesCollectionControllerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,8 +120,10 @@
 				6428697625E879FA0008F214 /* AppDelegate.swift */,
 				6428697825E879FA0008F214 /* SceneDelegate.swift */,
 				642869C625E88F330008F214 /* Coordinators */,
+				6499307925E99398008DFA6C /* WhalesCollectionControllerViewModel.swift */,
 				642869B225E889EA0008F214 /* WhalesCollectionViewController.swift */,
 				6499306F25E989E3008DFA6C /* WhaleCollectionViewCell.swift */,
+				6499307425E98F74008DFA6C /* WhaleCollectionCellViewModel.swift */,
 				6499304325E9725F008DFA6C /* Whale.swift */,
 				6499306225E987C0008DFA6C /* DataProvider.swift */,
 				6499306A25E987D7008DFA6C /* JSONDataProvider.swift */,
@@ -295,8 +301,10 @@
 				6428697725E879FA0008F214 /* AppDelegate.swift in Sources */,
 				6428697925E879FA0008F214 /* SceneDelegate.swift in Sources */,
 				6499304425E9725F008DFA6C /* Whale.swift in Sources */,
+				6499307A25E99398008DFA6C /* WhalesCollectionControllerViewModel.swift in Sources */,
 				642869C225E88CD00008F214 /* WhalesCollectionViewControllerCoordinator.swift in Sources */,
 				6499306B25E987D8008DFA6C /* JSONDataProvider.swift in Sources */,
+				6499307525E98F74008DFA6C /* WhaleCollectionCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

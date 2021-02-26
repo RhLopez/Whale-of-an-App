@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "name": "Blue Whale",
+      "imagePath": "640x427-blue-whale.jpg"
+    },
+    {
+      "name": "Beluga Whale",
+      "imagePath": "640x427-beluga-whale.png"
+    },
+    {
+      "name": "Gray Whale",
+      "imagePath": "640x427-gray-whale.png"
+    },
+    {
+      "name": "Humpback Whale",
+      "imagePath": "640x427-humpback.png"
+    }
+  ]
+}

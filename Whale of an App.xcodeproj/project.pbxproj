@@ -13,7 +13,10 @@
 		6428698325E879FA0008F214 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6428698125E879FA0008F214 /* LaunchScreen.storyboard */; };
 		6428698E25E879FA0008F214 /* Whale_of_an_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6428698D25E879FA0008F214 /* Whale_of_an_AppTests.swift */; };
 		6428699925E879FA0008F214 /* Whale_of_an_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6428699825E879FA0008F214 /* Whale_of_an_AppUITests.swift */; };
+		642869B325E889EA0008F214 /* WhalesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642869B225E889EA0008F214 /* WhalesCollectionViewController.swift */; };
 		642869B825E88B1A0008F214 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642869B725E88B1A0008F214 /* Coordinator.swift */; };
+		642869BD25E88B840008F214 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642869BC25E88B840008F214 /* AppCoordinator.swift */; };
+		642869C225E88CD00008F214 /* WhalesCollectionViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642869C125E88CD00008F214 /* WhalesCollectionViewControllerCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +49,10 @@
 		6428699425E879FA0008F214 /* Whale of an AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Whale of an AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6428699825E879FA0008F214 /* Whale_of_an_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whale_of_an_AppUITests.swift; sourceTree = "<group>"; };
 		6428699A25E879FA0008F214 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		642869B225E889EA0008F214 /* WhalesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhalesCollectionViewController.swift; sourceTree = "<group>"; };
 		642869B725E88B1A0008F214 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		642869BC25E88B840008F214 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		642869C125E88CD00008F214 /* WhalesCollectionViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhalesCollectionViewControllerCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +105,8 @@
 			children = (
 				6428697625E879FA0008F214 /* AppDelegate.swift */,
 				6428697825E879FA0008F214 /* SceneDelegate.swift */,
-				642869B725E88B1A0008F214 /* Coordinator.swift */,
+				642869C625E88F330008F214 /* Coordinators */,
+				642869B225E889EA0008F214 /* WhalesCollectionViewController.swift */,
 				6428697F25E879FA0008F214 /* Assets.xcassets */,
 				6428698125E879FA0008F214 /* LaunchScreen.storyboard */,
 				6428698425E879FA0008F214 /* Info.plist */,
@@ -123,6 +130,16 @@
 				6428699A25E879FA0008F214 /* Info.plist */,
 			);
 			path = "Whale of an AppUITests";
+			sourceTree = "<group>";
+		};
+		642869C625E88F330008F214 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				642869B725E88B1A0008F214 /* Coordinator.swift */,
+				642869BC25E88B840008F214 /* AppCoordinator.swift */,
+				642869C125E88CD00008F214 /* WhalesCollectionViewControllerCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,8 +272,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				642869B825E88B1A0008F214 /* Coordinator.swift in Sources */,
+				642869B325E889EA0008F214 /* WhalesCollectionViewController.swift in Sources */,
+				642869BD25E88B840008F214 /* AppCoordinator.swift in Sources */,
 				6428697725E879FA0008F214 /* AppDelegate.swift in Sources */,
 				6428697925E879FA0008F214 /* SceneDelegate.swift in Sources */,
+				642869C225E88CD00008F214 /* WhalesCollectionViewControllerCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

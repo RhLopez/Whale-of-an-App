@@ -10,13 +10,16 @@ import UIKit
 final class WhalesCollectionViewControllerCoordinator: Coordinator {
     private let rootViewController: UIViewController
     var childCoordinators: [Coordinator] = []
+    let dataProvider: DataProvider
     
     init(rootViewController: UIViewController) {
         self.rootViewController = rootViewController
+        self.dataProvider = JSONDataProvider(fileName: "WhaleData")
     }
     
     func start() {
-        let viewController = WhalesCollectionViewController()
+        let viewModel = WhalesCollectionControllerViewModel(dataProvider: dataProvider)
+        let viewController = WhalesCollectionViewController(viewModel: viewModel)
         
         rootViewController.view.addSubview(viewController.view)
         rootViewController.addChild(viewController)

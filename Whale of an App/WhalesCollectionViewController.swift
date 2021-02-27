@@ -92,8 +92,9 @@ class WhalesCollectionViewController: UIViewController {
         guard let datasource = datasource else { return }
         
         var snapshot = NSDiffableDataSourceSnapshot<WhaleCollectionViewSection, Whale>()
+        snapshot.appendSections([.main])
         snapshot.appendItems(whales, toSection: .main)
-        datasource.apply(snapshot)
+        datasource.apply(snapshot, animatingDifferences: false, completion: nil)
     }
 }
  

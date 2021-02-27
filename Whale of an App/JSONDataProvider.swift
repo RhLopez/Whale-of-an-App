@@ -18,7 +18,7 @@ final class JSONDataProvider: DataProvider {
         self.fileName = fileName
     }
     
-    func fetchWhales() -> [Whale] {
+    func fetchWhales(completion: @escaping ([Whale]) -> Void) {
         guard let url = Bundle.main.url(forResource: fileName, withExtension: ".json") else {
             fatalError("Failed to locate \(fileName) in bundle")
         }
@@ -33,6 +33,6 @@ final class JSONDataProvider: DataProvider {
             fatalError("Failed to decode \(fileName) from bundle")
         }
         
-        return whaleData.whales
+        completion(whaleData.whales)
     }
 }

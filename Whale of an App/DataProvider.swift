@@ -8,5 +8,5 @@
 import Foundation
 
 protocol DataProvider {
-    func fetchWhales() -> [Whale]
+    func fetchWhales(completion: @escaping ([Whale]) -> Void)
 }

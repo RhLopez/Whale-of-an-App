@@ -46,19 +46,20 @@ class WhalesCollectionViewController: UIViewController {
         NSLayoutConstraint.activate([
             whalesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             whalesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            whalesCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            whalesCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             whalesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
     private func createCollectionViewLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                              heightDimension: .fractionalWidth(1.0))
+                                              heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                               heightDimension: .fractionalHeight(1.0))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 2)
+                                               heightDimension: .fractionalHeight(0.5))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         let section = NSCollectionLayoutSection(group: group)
+        
         return UICollectionViewCompositionalLayout(section: section)
     }
     

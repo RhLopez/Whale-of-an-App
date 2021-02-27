@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class WhalesCollectionViewController: UIViewController {
     
@@ -15,10 +16,11 @@ class WhalesCollectionViewController: UIViewController {
     
     let viewModel: WhalesCollectionControllerViewModel
     var datasource: UICollectionViewDiffableDataSource<WhaleCollectionViewSection, Whale>?
+    var subscriptions = Set<AnyCancellable>()
     
     lazy var whalesCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createCollectionViewLayout())
-        collectionView.backgroundColor = .green
+        collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
@@ -36,8 +38,21 @@ class WhalesCollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .systemBackground
+        
         configureViewHierarchy()
         configureDataSource()
+        bindViewModel()
+        
+        viewModel.fetchWhales()
+    }
+    
+    private func bindViewModel() {
+        viewModel.whales
+            .sink { [weak self] whales in
+                self?.updateDataSource(with: whales)
+            }
+            .store(in: &subscriptions)
     }
     
     private func configureViewHierarchy() {

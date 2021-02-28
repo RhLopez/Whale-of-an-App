@@ -9,19 +9,13 @@ import UIKit
 import Combine
 
 class WhalesCollectionViewController: UIViewController {
+    private let viewModel: WhalesCollectionControllerViewModel
+    private var datasource: UICollectionViewDiffableDataSource<WhaleCollectionViewSection, Whale>?
+    private var subscriptions = Set<AnyCancellable>()
     
-    enum WhaleCollectionViewSection {
-        case main
-    }
-    
-    let viewModel: WhalesCollectionControllerViewModel
-    var datasource: UICollectionViewDiffableDataSource<WhaleCollectionViewSection, Whale>?
-    var subscriptions = Set<AnyCancellable>()
-    
-    lazy var whalesCollectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createCollectionViewLayout())
+    private let whalesCollectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.backgroundColor = .clear
-        collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
@@ -38,8 +32,8 @@ class WhalesCollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBackground
-        
+        view.backgroundColor = viewModel.backgroundColor
+        configureCollectionView()
         configureViewHierarchy()
         configureDataSource()
         bindViewModel()
@@ -55,6 +49,11 @@ class WhalesCollectionViewController: UIViewController {
             .store(in: &subscriptions)
     }
     
+    private func configureCollectionView() {
+        whalesCollectionView.collectionViewLayout = createCollectionViewLayout()
+        whalesCollectionView.delegate = self
+    }
+    
     private func configureViewHierarchy() {
         view.addSubview(whalesCollectionView)
         
@@ -62,7 +61,7 @@ class WhalesCollectionViewController: UIViewController {
             whalesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             whalesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             whalesCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            whalesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            whalesCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
@@ -79,8 +78,9 @@ class WhalesCollectionViewController: UIViewController {
     }
     
     private func configureDataSource() {
-        let whaleCell = UICollectionView.CellRegistration<WhaleCollectionViewCell, Whale> { cell, indexPath, whale in
-            cell.viewModel = WhaleCollectionCellViewModel(whale: whale)
+        let whaleCell = UICollectionView.CellRegistration<WhaleCollectionViewCell, Whale> { [weak self] cell, indexPath, _ in
+            guard let self = self else { return }
+            cell.viewModel = self.viewModel.cellViewModel(at: indexPath)
         }
         
         datasource = UICollectionViewDiffableDataSource<WhaleCollectionViewSection, Whale>(collectionView: whalesCollectionView, cellProvider: { collectionView, indexPath, whale -> UICollectionViewCell? in
@@ -98,7 +98,13 @@ class WhalesCollectionViewController: UIViewController {
     }
 }
  
-// MARK: UICollectionViewDelegate
+// MARK: - UICollectionViewDelegate
 extension WhalesCollectionViewController: UICollectionViewDelegate {
-    
+}
+
+// MARK: - CollectionView Section Type
+extension WhalesCollectionViewController {
+    enum WhaleCollectionViewSection {
+        case main
+    }
 }

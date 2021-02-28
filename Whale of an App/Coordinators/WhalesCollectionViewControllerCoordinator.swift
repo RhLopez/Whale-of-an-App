@@ -11,14 +11,16 @@ final class WhalesCollectionViewControllerCoordinator: Coordinator {
     private let rootViewController: UIViewController
     var childCoordinators: [Coordinator] = []
     let dataProvider: DataProvider
+    let imageLoader: RemoteImageLoader
     
     init(rootViewController: UIViewController) {
         self.rootViewController = rootViewController
         self.dataProvider = JSONDataProvider(fileName: "WhaleData")
+        self.imageLoader = WhaleRemoteImageLoader()
     }
     
     func start() {
-        let viewModel = WhalesCollectionControllerViewModel(dataProvider: dataProvider)
+        let viewModel = WhalesCollectionControllerViewModel(dataProvider: dataProvider, imageLoader: imageLoader)
         let viewController = WhalesCollectionViewController(viewModel: viewModel)
         
         rootViewController.view.addSubview(viewController.view)

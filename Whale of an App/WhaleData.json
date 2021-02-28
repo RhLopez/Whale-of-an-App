@@ -15,6 +15,14 @@
     {
       "name": "Humpback Whale",
       "imagePath": "640x427-humpback.png"
+    },
+    {
+      "name": "Killer Whale",
+      "imagePath": "640x427-killer-whale.png"
+    },
+    {
+      "name": "Bowhead Whale",
+      "imagePath": "640x427-bowhead-whale.png"
     }
   ]
 }

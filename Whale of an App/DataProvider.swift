@@ -9,4 +9,5 @@ import Foundation
 
 protocol DataProvider {
     func fetchWhales(completion: @escaping ([Whale]) -> Void)
+    func fetchCardBackgroundColors(completion: @escaping ([String]) -> Void)
 }

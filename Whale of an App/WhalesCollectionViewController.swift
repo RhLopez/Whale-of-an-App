@@ -10,7 +10,7 @@ import Combine
 
 class WhalesCollectionViewController: UIViewController {
     private let viewModel: WhalesCollectionControllerViewModel
-    private var datasource: UICollectionViewDiffableDataSource<WhaleCollectionViewSection, Whale>?
+    private var datasource: UICollectionViewDiffableDataSource<WhaleCollectionViewSection, WhaleCard>?
     private var subscriptions = Set<AnyCancellable>()
     
     private let whalesCollectionView: UICollectionView = {
@@ -18,6 +18,12 @@ class WhalesCollectionViewController: UIViewController {
         collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
+    }()
+    
+    private let activityIndicator: UIActivityIndicatorView = {
+        let indiciator = UIActivityIndicatorView(style: .medium)
+        indiciator.translatesAutoresizingMaskIntoConstraints = false
+        return indiciator
     }()
     
     init(viewModel: WhalesCollectionControllerViewModel) {
@@ -38,13 +44,19 @@ class WhalesCollectionViewController: UIViewController {
         configureDataSource()
         bindViewModel()
         
-        viewModel.fetchWhales()
+        viewModel.fetchData()
     }
     
     private func bindViewModel() {
-        viewModel.whales
-            .sink { [weak self] whales in
-                self?.updateDataSource(with: whales)
+        viewModel.whaleCards
+            .sink { [weak self] cards in
+                self?.updateDataSource(with: cards)
+            }
+            .store(in: &subscriptions)
+        
+        viewModel.loadingStatus
+            .sink { [weak self] loadingStatus in
+                self?.updateLoadingStatus(with: loadingStatus)
             }
             .store(in: &subscriptions)
     }
@@ -63,6 +75,22 @@ class WhalesCollectionViewController: UIViewController {
             whalesCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             whalesCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+        
+        view.addSubview(activityIndicator)
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+    }
+    
+    private func updateLoadingStatus(with loadingStatus: LoadingStatus) {
+        switch loadingStatus {
+        case .loading:
+            activityIndicator.startAnimating()
+        case .loaded, .iddle:
+            activityIndicator.stopAnimating()
+        }
     }
     
     private func createCollectionViewLayout() -> UICollectionViewLayout {
@@ -78,28 +106,31 @@ class WhalesCollectionViewController: UIViewController {
     }
     
     private func configureDataSource() {
-        let whaleCell = UICollectionView.CellRegistration<WhaleCollectionViewCell, Whale> { [weak self] cell, indexPath, _ in
+        let whaleCell = UICollectionView.CellRegistration<WhaleCollectionViewCell, WhaleCard> { [weak self] cell, indexPath, _ in
             guard let self = self else { return }
             cell.viewModel = self.viewModel.cellViewModel(at: indexPath)
         }
         
-        datasource = UICollectionViewDiffableDataSource<WhaleCollectionViewSection, Whale>(collectionView: whalesCollectionView, cellProvider: { collectionView, indexPath, whale -> UICollectionViewCell? in
+        datasource = UICollectionViewDiffableDataSource<WhaleCollectionViewSection, WhaleCard>(collectionView: whalesCollectionView, cellProvider: { collectionView, indexPath, whale -> UICollectionViewCell? in
             collectionView.dequeueConfiguredReusableCell(using: whaleCell, for: indexPath, item: whale)
         })
     }
     
-    private func updateDataSource(with whales: [Whale]) {
+    private func updateDataSource(with cards: [WhaleCard]) {
         guard let datasource = datasource else { return }
         
-        var snapshot = NSDiffableDataSourceSnapshot<WhaleCollectionViewSection, Whale>()
+        var snapshot = NSDiffableDataSourceSnapshot<WhaleCollectionViewSection, WhaleCard>()
         snapshot.appendSections([.main])
-        snapshot.appendItems(whales, toSection: .main)
+        snapshot.appendItems(cards, toSection: .main)
         datasource.apply(snapshot, animatingDifferences: false, completion: nil)
     }
 }
  
 // MARK: - UICollectionViewDelegate
 extension WhalesCollectionViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.didSelectItem(at: indexPath)
+    }
 }
 
 // MARK: - CollectionView Section Type

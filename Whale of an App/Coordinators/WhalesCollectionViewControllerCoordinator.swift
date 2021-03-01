@@ -20,7 +20,8 @@ final class WhalesCollectionViewControllerCoordinator: Coordinator {
     }
     
     func start() {
-        let viewModel = WhalesCollectionControllerViewModel(dataProvider: dataProvider, imageLoader: imageLoader)
+        let viewModel = WhalesCollectionControllerViewModel(dataProvider: dataProvider,
+                                                            imageLoader: imageLoader)
         viewModel.delegate = self
         let viewController = WhalesCollectionViewController(viewModel: viewModel)
         
@@ -29,15 +30,27 @@ final class WhalesCollectionViewControllerCoordinator: Coordinator {
         viewController.didMove(toParent: rootViewController)
     }
     
-    func whaleCardDetailControllerCoordinator(card: WhaleCard) {
-        let coordinator = WhaleCardDetailControllerCoordinator(card: card, rootViewController: rootViewController)
+    func whaleCardDetailControllerCoordinator(whaleCard: WhaleCard) {
+        let coordinator = WhaleCardDetailControllerCoordinator(whaleCard: whaleCard,
+                                                               imageLoader: imageLoader,
+                                                               rootViewController: rootViewController)
+        coordinator.delegate = self
         childCoordinators.append(coordinator)
         coordinator.start()
     }
 }
 
+
+//MARK: - WhalesCollectionControllerViewModelDelegate
 extension WhalesCollectionViewControllerCoordinator: WhalesCollectionControllerViewModelDelegate {
-    func didSelect(card: WhaleCard) {
-        whaleCardDetailControllerCoordinator(card: card)
+    func didSelect(whaleCard: WhaleCard) {
+        whaleCardDetailControllerCoordinator(whaleCard: whaleCard)
+    }
+}
+
+// MARK: - WhaleCardDetailControllerCoordinatorDelegate
+extension WhalesCollectionViewControllerCoordinator: WhaleCardDetailControllerCoordinatorDelegate {
+    func whaleCardDetailControllerDismissed() {
+        childCoordinators.removeAll(where: { $0 is WhaleCardDetailControllerCoordinator })
     }
 }

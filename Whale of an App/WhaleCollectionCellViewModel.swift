@@ -15,30 +15,28 @@ enum LoadingStatus {
 }
 
 class WhaleCollectionCellViewModel {
-    private let whale: Whale
-    private let backgroundColor: UIColor
+    private let card: WhaleCard
     private let imageLoader: RemoteImageLoader
     let whaleImage = CurrentValueSubject<UIImage?, Never>(nil)
     let loadingStatus = CurrentValueSubject<LoadingStatus, Never>(.iddle)
     
     var whaleName: String {
-        return whale.name
+        return card.whale.name
     }
     
-    var cellBackgroundColor: UIColor {
-        return backgroundColor
+    var cellBackgroundColor: UIColor? {
+        return UIColor(hexString: card.backgroundColor)
     }
     
-    init(whale: Whale, backgroundColor: UIColor, imageLoader: RemoteImageLoader) {
-        self.whale = whale
-        self.backgroundColor = backgroundColor
+    init(card: WhaleCard, imageLoader: RemoteImageLoader) {
+        self.card = card
         self.imageLoader = imageLoader
     }
     
     func fetchRemoteImage() {
         loadingStatus.send(.loading)
         
-        imageLoader.fetchImage(withPath: whale.imagePath) { [weak self] result in
+        imageLoader.fetchImage(withPath: card.whale.imagePath) { [weak self] result in
             var image: UIImage?
             
             switch result {

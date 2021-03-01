@@ -38,7 +38,6 @@ class WhalesCollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = viewModel.backgroundColor
         configureCollectionView()
         configureViewHierarchy()
         configureDataSource()
@@ -67,6 +66,7 @@ class WhalesCollectionViewController: UIViewController {
     }
     
     private func configureViewHierarchy() {
+        view.backgroundColor = viewModel.backgroundColor
         view.addSubview(whalesCollectionView)
         
         NSLayoutConstraint.activate([
@@ -104,7 +104,10 @@ class WhalesCollectionViewController: UIViewController {
         
         return UICollectionViewCompositionalLayout(section: section)
     }
-    
+}
+
+// MARK: - UICollectionViewDataSource
+extension WhalesCollectionViewController {
     private func configureDataSource() {
         let whaleCell = UICollectionView.CellRegistration<WhaleCollectionViewCell, WhaleCard> { [weak self] cell, indexPath, _ in
             guard let self = self else { return }

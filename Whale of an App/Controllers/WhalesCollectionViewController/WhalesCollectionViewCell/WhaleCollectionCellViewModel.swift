@@ -8,12 +8,6 @@
 import UIKit
 import Combine
 
-enum LoadingStatus {
-    case loading
-    case loaded
-    case iddle
-}
-
 class WhaleCollectionCellViewModel {
     private let card: WhaleCard
     private let imageLoader: RemoteImageLoader

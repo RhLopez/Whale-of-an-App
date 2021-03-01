@@ -22,6 +22,7 @@
 		643DFD2325EC5A3900C41159 /* WhaleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643DFD2225EC5A3900C41159 /* WhaleCard.swift */; };
 		643DFD2825EC618600C41159 /* CardBackgroundColors.json in Resources */ = {isa = PBXBuildFile; fileRef = 643DFD2725EC618600C41159 /* CardBackgroundColors.json */; };
 		643DFD2D25EC66EE00C41159 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643DFD2C25EC66EE00C41159 /* UIColor+Extension.swift */; };
+		643DFD3B25ECC4F100C41159 /* WhaleCardDetailControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643DFD3A25ECC4F100C41159 /* WhaleCardDetailControllerViewModel.swift */; };
 		6457B80D25EB25D400258D50 /* RemoteImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6457B80C25EB25D300258D50 /* RemoteImageLoader.swift */; };
 		6473425725EA1C4A00B054AD /* WhaleRemoteImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6473425625EA1C4A00B054AD /* WhaleRemoteImageLoader.swift */; };
 		6499304425E9725F008DFA6C /* Whale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6499304325E9725F008DFA6C /* Whale.swift */; };
@@ -31,6 +32,7 @@
 		6499307025E989E3008DFA6C /* WhaleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6499306F25E989E3008DFA6C /* WhaleCollectionViewCell.swift */; };
 		6499307525E98F74008DFA6C /* WhaleCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6499307425E98F74008DFA6C /* WhaleCollectionCellViewModel.swift */; };
 		6499307A25E99398008DFA6C /* WhalesCollectionControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6499307925E99398008DFA6C /* WhalesCollectionControllerViewModel.swift */; };
+		64A517FC25ED60A4003C64D2 /* LoadingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A517FB25ED60A4003C64D2 /* LoadingStatus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,7 @@
 		643DFD2225EC5A3900C41159 /* WhaleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhaleCard.swift; sourceTree = "<group>"; };
 		643DFD2725EC618600C41159 /* CardBackgroundColors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CardBackgroundColors.json; sourceTree = "<group>"; };
 		643DFD2C25EC66EE00C41159 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		643DFD3A25ECC4F100C41159 /* WhaleCardDetailControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhaleCardDetailControllerViewModel.swift; sourceTree = "<group>"; };
 		6457B80C25EB25D300258D50 /* RemoteImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageLoader.swift; sourceTree = "<group>"; };
 		6473425625EA1C4A00B054AD /* WhaleRemoteImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhaleRemoteImageLoader.swift; sourceTree = "<group>"; };
 		6499304325E9725F008DFA6C /* Whale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whale.swift; sourceTree = "<group>"; };
@@ -81,6 +84,7 @@
 		6499306F25E989E3008DFA6C /* WhaleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhaleCollectionViewCell.swift; sourceTree = "<group>"; };
 		6499307425E98F74008DFA6C /* WhaleCollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhaleCollectionCellViewModel.swift; sourceTree = "<group>"; };
 		6499307925E99398008DFA6C /* WhalesCollectionControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhalesCollectionControllerViewModel.swift; sourceTree = "<group>"; };
+		64A517FB25ED60A4003C64D2 /* LoadingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingStatus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,23 +138,14 @@
 				6428697625E879FA0008F214 /* AppDelegate.swift */,
 				6428697825E879FA0008F214 /* SceneDelegate.swift */,
 				642869C625E88F330008F214 /* Coordinators */,
-				6499307925E99398008DFA6C /* WhalesCollectionControllerViewModel.swift */,
-				642869B225E889EA0008F214 /* WhalesCollectionViewController.swift */,
-				6499307425E98F74008DFA6C /* WhaleCollectionCellViewModel.swift */,
-				6499306F25E989E3008DFA6C /* WhaleCollectionViewCell.swift */,
-				643DFD1825EC58C000C41159 /* WhaleCardDetailViewController.swift */,
-				643DFD2225EC5A3900C41159 /* WhaleCard.swift */,
-				6499304325E9725F008DFA6C /* Whale.swift */,
-				6499306225E987C0008DFA6C /* DataProvider.swift */,
-				6499306A25E987D7008DFA6C /* JSONDataProvider.swift */,
-				6457B80C25EB25D300258D50 /* RemoteImageLoader.swift */,
-				6473425625EA1C4A00B054AD /* WhaleRemoteImageLoader.swift */,
-				643DFD2C25EC66EE00C41159 /* UIColor+Extension.swift */,
-				6428697F25E879FA0008F214 /* Assets.xcassets */,
+				64A5180925ED6351003C64D2 /* Model */,
+				64A5181D25ED6B8E003C64D2 /* Controllers */,
+				64A5180025ED6328003C64D2 /* DataProvider */,
+				64A5180425ED6335003C64D2 /* RemoteImageLoader */,
+				64A5180525ED633E003C64D2 /* Helper */,
+				64A5180D25ED63ED003C64D2 /* Resources */,
 				6428698125E879FA0008F214 /* LaunchScreen.storyboard */,
 				6428698425E879FA0008F214 /* Info.plist */,
-				6499305025E977EF008DFA6C /* WhaleData.json */,
-				643DFD2725EC618600C41159 /* CardBackgroundColors.json */,
 			);
 			path = "Whale of an App";
 			sourceTree = "<group>";
@@ -182,6 +177,89 @@
 				643DFD1D25EC58DF00C41159 /* WhaleCardDetailControllerCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		64A5180025ED6328003C64D2 /* DataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				6499306225E987C0008DFA6C /* DataProvider.swift */,
+				6499306A25E987D7008DFA6C /* JSONDataProvider.swift */,
+			);
+			path = DataProvider;
+			sourceTree = "<group>";
+		};
+		64A5180425ED6335003C64D2 /* RemoteImageLoader */ = {
+			isa = PBXGroup;
+			children = (
+				6457B80C25EB25D300258D50 /* RemoteImageLoader.swift */,
+				6473425625EA1C4A00B054AD /* WhaleRemoteImageLoader.swift */,
+			);
+			path = RemoteImageLoader;
+			sourceTree = "<group>";
+		};
+		64A5180525ED633E003C64D2 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				64A517FB25ED60A4003C64D2 /* LoadingStatus.swift */,
+				643DFD2C25EC66EE00C41159 /* UIColor+Extension.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		64A5180925ED6351003C64D2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				643DFD2225EC5A3900C41159 /* WhaleCard.swift */,
+				6499304325E9725F008DFA6C /* Whale.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		64A5180D25ED63ED003C64D2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6428697F25E879FA0008F214 /* Assets.xcassets */,
+				6499305025E977EF008DFA6C /* WhaleData.json */,
+				643DFD2725EC618600C41159 /* CardBackgroundColors.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		64A5180E25ED640D003C64D2 /* WhalesCollectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6499307925E99398008DFA6C /* WhalesCollectionControllerViewModel.swift */,
+				642869B225E889EA0008F214 /* WhalesCollectionViewController.swift */,
+				64A5180F25ED6420003C64D2 /* WhalesCollectionViewCell */,
+			);
+			path = WhalesCollectionViewController;
+			sourceTree = "<group>";
+		};
+		64A5180F25ED6420003C64D2 /* WhalesCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				6499307425E98F74008DFA6C /* WhaleCollectionCellViewModel.swift */,
+				6499306F25E989E3008DFA6C /* WhaleCollectionViewCell.swift */,
+			);
+			path = WhalesCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		64A5181325ED6433003C64D2 /* WhaleCardDetailVIewController */ = {
+			isa = PBXGroup;
+			children = (
+				643DFD3A25ECC4F100C41159 /* WhaleCardDetailControllerViewModel.swift */,
+				643DFD1825EC58C000C41159 /* WhaleCardDetailViewController.swift */,
+			);
+			path = WhaleCardDetailVIewController;
+			sourceTree = "<group>";
+		};
+		64A5181D25ED6B8E003C64D2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				64A5180E25ED640D003C64D2 /* WhalesCollectionViewController */,
+				64A5181325ED6433003C64D2 /* WhaleCardDetailVIewController */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,7 +409,9 @@
 				643DFD1E25EC58DF00C41159 /* WhaleCardDetailControllerCoordinator.swift in Sources */,
 				6499306B25E987D8008DFA6C /* JSONDataProvider.swift in Sources */,
 				6499307525E98F74008DFA6C /* WhaleCollectionCellViewModel.swift in Sources */,
+				64A517FC25ED60A4003C64D2 /* LoadingStatus.swift in Sources */,
 				6457B80D25EB25D400258D50 /* RemoteImageLoader.swift in Sources */,
+				643DFD3B25ECC4F100C41159 /* WhaleCardDetailControllerViewModel.swift in Sources */,
 				6473425725EA1C4A00B054AD /* WhaleRemoteImageLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

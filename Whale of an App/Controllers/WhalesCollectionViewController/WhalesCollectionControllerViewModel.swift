@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 protocol WhalesCollectionControllerViewModelDelegate: class {
-    func didSelect(card: WhaleCard)
+    func didSelect(whaleCard: WhaleCard)
 }
 
 class WhalesCollectionControllerViewModel {
@@ -76,7 +76,7 @@ class WhalesCollectionControllerViewModel {
     }
     
     func didSelectItem(at indexPath: IndexPath) {
-        let card = whaleCards.value[indexPath.item]
-        delegate?.didSelect(card: card)
+        let whaleCard = whaleCards.value[indexPath.item]
+        delegate?.didSelect(whaleCard: whaleCard)
     }
 }
